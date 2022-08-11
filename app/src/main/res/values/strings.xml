@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Mediaplayer</string>
+    <string name="favourite_btn">favourite</string>
+    <string name="shuffle">shuffle</string>
+    <string name="playlist">playlist</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+</resources>
