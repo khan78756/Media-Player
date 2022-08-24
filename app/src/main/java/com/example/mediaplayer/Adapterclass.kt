@@ -8,7 +8,7 @@ import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mediaplayer.databinding.ItemRecyclarBinding
 
-class music(private val context: Context,private val musiclist:ArrayList<dataClass>): RecyclerView.Adapter<music.MyHolder>() {
+class music(private val context: Context,private var musiclist:ArrayList<dataClass>): RecyclerView.Adapter<music.MyHolder>() {
      class MyHolder(binding: ItemRecyclarBinding): RecyclerView.ViewHolder(binding.root) {
 
          val title=binding.tvsong
@@ -32,15 +32,29 @@ class music(private val context: Context,private val musiclist:ArrayList<dataCla
              .placeholder(R.drawable.logoworld).centerCrop())
              .into(holder.image)*/
          holder.root.setOnClickListener {
-             Intent(context,PlayerActivity::class.java).also {
-             it.putExtra("index",position)
-             it.putExtra("class","music")
+             when{
+                 MainActivity.search->Intent(context,PlayerActivity::class.java).also {
+                     it.putExtra("index",position)
+                     it.putExtra("class","musicSearch")
+                     startActivity(context,it,null)}
+
+                 else -> Intent(context,PlayerActivity::class.java).also {
+                 it.putExtra("index",position)
+                 it.putExtra("class","music")
                  startActivity(context,it,null)
-             }
+             }}
          }
      }
 
      override fun getItemCount(): Int {
          return musiclist.size
      }
+
+
+    fun updateList(searchList:ArrayList<dataClass>){
+        musiclist= ArrayList()
+        musiclist.addAll(searchList)
+        notifyDataSetChanged()
+
+    }
  }

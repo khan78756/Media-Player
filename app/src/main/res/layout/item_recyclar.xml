@@ -3,17 +3,14 @@
     android:layout_width="match_parent"
     android:background="@drawable/list_view"
     android:layout_height="wrap_content"
-    android:padding="15dp"
-    android:layout_marginEnd="10dp"
-    android:layout_marginStart="10dp"
-    android:layout_marginBottom="5dp">
+    android:padding="15dp">
 
     <ImageView
         android:id="@+id/mvid"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="50dp"
         android:layout_marginStart="5dp"
-        android:src="@drawable/logoworld"/>
+        android:src="@drawable/logoworld" />
 
     <TextView
         android:id="@+id/tvsong"
@@ -25,7 +22,7 @@
         android:text="Song Name"
         android:gravity="center_vertical"
         android:singleLine="true"
-        android:textColor="@color/black" />
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/tvalbum"
@@ -43,11 +40,11 @@
         android:id="@+id/tvduration"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginStart="5dp"
         android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="10dp"
         android:gravity="center_vertical"
-        android:text="00:00"
-        android:textColor="@color/black" />
+        android:text="00:00" />
 
 </RelativeLayout>

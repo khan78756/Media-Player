@@ -10,6 +10,7 @@
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/drawable/favourite.xml" value="0.1535" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/drawable/floatingborder.xml" value="0.1535" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1535" />
+        <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/drawable/list_view.xml" value="0.1675" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/drawable/next.xml" value="0.2035" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/drawable/play.xml" value="0.2035" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/drawable/playlist.xml" value="0.1535" />
@@ -21,13 +22,14 @@
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/drawable/shuffle1.xml" value="0.1535" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/drawable/timer.xml" value="0.1535" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/layout/activity_favouriteactivity.xml" value="0.2" />
-        <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/layout/activity_player.xml" value="0.2" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/layout/activity_playlistactivity.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/layout/activity_splash.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/layout/header.xml" value="0.22826086956521738" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/layout/item_recyclar.xml" value="0.4" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/menu/listelements.xml" value="0.25416666666666665" />
+        <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/menu/search.xml" value="0.253125" />
         <entry key="..\:/AndroidstudioProjects/Mediaplayer/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.124" />
       </map>
     </option>

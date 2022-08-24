@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#aaa193"
+
     android:fitsSystemWindows="true"
     tools:openDrawer="start"
     android:layout_height="match_parent"
@@ -26,7 +26,7 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:drawableTop="@drawable/shuffle"
                 android:text="@string/shuffle"
-                android:textColor="@color/black"
+                android:textColor="@color/userdred"
                 android:textAllCaps="false"
                 android:layout_weight="1"/>
 
@@ -36,7 +36,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:text="@string/favourite_btn"
-                android:textColor="@color/black"
+                android:textColor="@color/userdred"
                 android:textAllCaps="false"
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:drawableTop="@drawable/favourite"
@@ -49,7 +49,7 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:drawableTop="@drawable/playlist"
                 android:text="@string/playlist"
-                android:textColor="@color/black"
+                android:textColor="@color/userdred"
                 android:textAllCaps="false"
                 android:contentDescription="@string/playlist"
                 android:layout_weight="1"/>
@@ -66,6 +66,7 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/musicRV"
+            android:background="@drawable/list_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
     </LinearLayout>
@@ -74,7 +75,6 @@
         android:id="@+id/navid"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:background="#aaa193"
         android:fitsSystemWindows="true"
         android:layout_gravity="start"
         app:headerLayout="@layout/header"

@@ -2,30 +2,41 @@ package com.example.mediaplayer
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.ComponentName
 import android.content.Intent
+import android.content.ServiceConnection
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
+import android.os.IBinder
 import android.provider.MediaStore
+import android.provider.SyncStateContract.Helpers.update
+import android.view.Menu
 import android.view.MenuItem
+import android.widget.Adapter
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mediaplayer.databinding.ActivityMainBinding
 import java.io.File
 import kotlin.system.exitProcess
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var toggle:ActionBarDrawerToggle
+    private lateinit var searchView: SearchView
     private lateinit var adapter:music
 
     companion object{
        lateinit var musicListMP: ArrayList<dataClass>
+       lateinit var musicListsearch: ArrayList<dataClass>
+       var search :Boolean = false
+
     }
 
     @SuppressLint("SetTextI18n")
@@ -33,56 +44,51 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         //request permission
         requestPermission()
-        binding=ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         //function for recycler view
+
         initial()
 
 
-    //============================================================================================//
+        //============================================================================================//
 
         //for drawer purpose
-        toggle= ActionBarDrawerToggle(this,binding.root,R.string.open,R.string.close)
+        toggle = ActionBarDrawerToggle(this, binding.root, R.string.open, R.string.close)
         binding.root.addDrawerListener(toggle)
         toggle.syncState()
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        binding.totalsongs.text="Total Songs : "+ adapter.itemCount
-
+        binding.totalsongs.text = "Total Songs : " + adapter.itemCount
 
 
         //======================================================================================//
 
 
         binding.btnshuffle.setOnClickListener {
-            Intent(this,PlayerActivity::class.java).also {
-                it.putExtra("index",0)
-                it.putExtra("class","MainActivity")
+            Intent(this, PlayerActivity::class.java).also {
+                it.putExtra("index", 0)
+                it.putExtra("class", "MainActivity")
                 startActivity(it)
             }
         }
-
 
 
         //===================================================================================//
 
         binding.btnfav.setOnClickListener {
-            Intent(this,favouriteactivity::class.java).also {
+            Intent(this, favouriteactivity::class.java).also {
                 startActivity(it)
             }
         }
 
 
-
         //===================================================================================//
 
 
-
-
-
         binding.btnplaylist.setOnClickListener {
-            Intent(this,playlistactivity::class.java).also {
+            Intent(this, playlistactivity::class.java).also {
                 startActivity(it)
             }
         }
@@ -91,13 +97,24 @@ class MainActivity : AppCompatActivity() {
         //====================================================================================//
 
 
-
         binding.navid.setNavigationItemSelectedListener {
-            when(it.itemId){
-                R.id.item1-> Toast.makeText(applicationContext,"You press Feedback",Toast.LENGTH_SHORT).show()
-                R.id.item2-> Toast.makeText(applicationContext,"You press settings",Toast.LENGTH_SHORT).show()
-                R.id.item3-> Toast.makeText(applicationContext,"You press About",Toast.LENGTH_SHORT).show()
-                R.id.item4-> exitProcess(1)
+            when (it.itemId) {
+                R.id.item1 -> Toast.makeText(
+                    applicationContext,
+                    "You press Feedback",
+                    Toast.LENGTH_SHORT
+                ).show()
+                R.id.item2 -> Toast.makeText(
+                    applicationContext,
+                    "You press settings",
+                    Toast.LENGTH_SHORT
+                ).show()
+                R.id.item3 -> Toast.makeText(
+                    applicationContext,
+                    "You press About",
+                    Toast.LENGTH_SHORT
+                ).show()
+                R.id.item4 -> exitProcess(1)
             }
             true
         }
@@ -150,6 +167,41 @@ class MainActivity : AppCompatActivity() {
     //============================================================================================//
 
 
+
+
+    //adding search bar
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.search,menu)
+        searchView= menu?.findItem(R.id.search1)?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                musicListsearch= ArrayList()
+                if (newText != null){
+                    val userInput=newText.lowercase()
+                    for (song in musicListMP)
+                        if (song.title.lowercase().contains(userInput))
+                            musicListsearch.add(song)
+                    search=true
+                    music(this@MainActivity, musicListMP).updateList(searchList = musicListsearch)
+
+
+                }
+                return true
+            }
+        })
+        return super.onCreateOptionsMenu(menu)
+    }
+
+
+
+
+    //=============================================================================================//
+
+
     @SuppressLint("Range")
     private fun getAllAudio() : ArrayList<dataClass>{
         val templist=ArrayList<dataClass>()
@@ -192,9 +244,12 @@ class MainActivity : AppCompatActivity() {
 
 
 
+      //=====================================================================================//
+
 
     //Definition of recycler view function
     private fun initial(){
+        search=false
         musicListMP=getAllAudio()
         binding.musicRV.setHasFixedSize(true)
         binding.musicRV.setItemViewCacheSize(13)
@@ -207,4 +262,8 @@ class MainActivity : AppCompatActivity() {
         binding.musicRV.adapter=adapter
         binding.musicRV.layoutManager=layoutManager
     }
+
+
+
+
 }

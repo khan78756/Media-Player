@@ -3,8 +3,8 @@
     <item android:state_enabled="true"
         android:state_focused="true">
         <shape android:shape="rectangle">
-            <corners android:radius="5dp" />
-            <stroke android:color="@color/userdred"
+            <corners android:radius="0dp" />
+            <stroke android:color="#39070707"
                 android:width="1dp"/>
         </shape>
     </item>
@@ -12,8 +12,8 @@
     <item android:state_enabled="true">
         <shape android:shape="rectangle">
 
-            <corners android:radius="5dp" />
-            <stroke  android:color="@color/userdred"
+            <corners android:radius="0dp" />
+            <stroke  android:color="#39070707"
                 android:width="1dp"/>
         </shape>
     </item>
